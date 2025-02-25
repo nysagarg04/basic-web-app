@@ -16,8 +16,13 @@ export default function QueryProcessor(query: string): string {
     return "Nysa";
   }
 
-  if (query.toLowerCase().includes("which of the following numbers is the largest: 46, 28, 48?")) {
-    return "48";
+  if (query.toLowerCase().includes("which of the following numbers is the largest:")) {
+    const matches = query.match(/\d+/g);
+    if (!matches) {
+      return "No numbers found";
+    }
+    const maxNumber = Math.max(...matches.map(Number));
+    return maxNumber.toString();
   }
 
   return "";
