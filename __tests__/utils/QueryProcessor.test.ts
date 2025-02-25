@@ -34,6 +34,14 @@ describe("QueryProcessor", () => {
           ));
     });
 
+    test('should return largest number', () => {
+        const query = "What is 50 plus 43?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe((
+            "93"
+          ));
+    });
+
     test('should return andrewid', () => {
         const query = "What is your andrew id";
         const response: string = QueryProcessor(query);
