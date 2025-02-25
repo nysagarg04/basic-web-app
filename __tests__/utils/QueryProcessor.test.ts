@@ -74,6 +74,14 @@ describe("QueryProcessor", () => {
           ));
     });
 
+    test('power', () => {
+        const query = "What is 2 to the power of 2?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe((
+            "4"
+          ));
+    });
+
     test('should return andrewid', () => {
         const query = "What is your andrew id";
         const response: string = QueryProcessor(query);
