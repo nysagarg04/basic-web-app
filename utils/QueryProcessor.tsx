@@ -84,6 +84,29 @@ export default function QueryProcessor(query: string): string {
     return maxNumber.toString();
   }
 
+
+
+  if (query.toLowerCase().includes("which of the following numbers are primes:")) {
+    // 1. Extract all numbers from the query
+    const matches = query.match(/\d+/g);
+    if (!matches) {
+      return "No numbers found.";
+    }
+
+    // 2. Convert matches into numbers
+    const numbers = matches.map(Number);
+
+    // 3. Filter the numbers to only the ones that are prime
+    const primes = numbers.filter((num) => isPrime(num));
+
+    // 4. Return them or a fallback message if none
+    if (primes.length === 0) {
+      return "None of the given numbers are prime.";
+    } else {
+      return primes.join(", ");
+    }
+  }
+
   return "";
 }
 
@@ -93,4 +116,16 @@ function isPerfectSixthPower(n: number): boolean {
   const root6 = Math.round(Math.pow(n, 1 / 6));
   // 2) Check if root6^6 = n
   return Math.pow(root6, 6) === n;
+}
+
+function isPrime(n: number): boolean {
+  if (n < 2) return false;
+  // A simple approach to check primality
+  // (for large numbers, a more efficient method might be needed).
+  for (let i = 2; i <= Math.sqrt(n); i++) {
+    if (n % i === 0) {
+      return false;
+    }
+  }
+  return true;
 }

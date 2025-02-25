@@ -66,6 +66,14 @@ describe("QueryProcessor", () => {
           ));
     });
 
+    test('prime', () => {
+        const query = "Which of the following numbers are primes: 88, 83, 37, 71, 25?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe((
+            "83, 37, 71"
+          ));
+    });
+
     test('should return andrewid', () => {
         const query = "What is your andrew id";
         const response: string = QueryProcessor(query);
