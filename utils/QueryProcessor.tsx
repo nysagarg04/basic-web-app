@@ -61,6 +61,20 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
+  if (query.toLowerCase().includes("what is") && query.toLowerCase().includes("minus")) {
+    const matches = query.match(/\d+/g);
+    if (matches && matches.length >= 2) {
+      // Convert the first two occurrences into numbers
+      const num1 = parseInt(matches[0], 10);
+      const num2 = parseInt(matches[1], 10);
+      // Compute the sum
+      const sum = num1 - num2;
+      return sum.toString();
+    } else {
+      return "I couldn’t find two numbers to multiply.";
+    }
+  }
+
   if (query.toLowerCase().includes("which of the following numbers is the largest:")) {
     const matches = query.match(/\d+/g);
     if (!matches) {
