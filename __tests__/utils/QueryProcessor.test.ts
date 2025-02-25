@@ -42,6 +42,14 @@ describe("QueryProcessor", () => {
           ));
     });
 
+    test('multiples', () => {
+        const query = "What is 72 multiplied by 92?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe((
+            "6624"
+          ));
+    });
+
     test('cube and square', () => {
         const query = "Which of the following numbers is both a square and a cube: 2396, 49, 125, 714, 181, 3299, 4096?	";
         const response: string = QueryProcessor(query);
